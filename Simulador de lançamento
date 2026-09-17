@@ -1,0 +1,63 @@
+```javascript
+let rastro;
+let tA = 0;
+
+//movimento vertical
+let dY;
+//let vY =96;
+let vY;
+let a = -9.8;
+
+//Movimento horizontal
+let dX;
+let vX;
+//let vX = 24;
+
+function setup() {
+  createCanvas(500, 500);
+  background(110);
+  rastro = createCheckbox();
+  rastro.position (50,50);
+  vX =  prompt ("defina a velocidade horizontal")
+  vY = prompt ("defina a velocidade vertical")
+
+  
+}
+
+function draw(){
+    if (rastro.checked()) {
+    background(110);
+}
+  dX = MRU (vX, tA);
+  dY = MRUV (vY, a, tA);
+  circle(10+dX,height-(10+dY),10);
+  console.log(tA);
+
+  text(int (dY) + ' metros',10+dX,height-(20+dY) );
+ 
+
+
+  
+  let dt = deltaTime / 1000;
+  tA += dt;
+  if(dY<0){
+    alert("Alcance Horizontal: " + int (dX) + "m");
+    noLoop();
+  }
+  
+
+}
+
+function MRUV(v,a,t){
+  let d = v * t + a * t * t/2.0;
+  return (d);
+  
+}
+
+function MRU(v,t){
+  
+  let d = v * t;
+  return d;
+  
+}
+```
